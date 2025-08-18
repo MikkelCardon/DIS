@@ -1,4 +1,4 @@
-package opgave02.udenThread;
+package DIS01.opgave02.udenThread;
 
 import java.util.ArrayList;
 import java.util.List;

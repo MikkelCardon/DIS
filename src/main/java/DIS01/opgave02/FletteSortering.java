@@ -1,4 +1,4 @@
-package opgave02;
+package DIS01.opgave02;
 
 import java.util.ArrayList;
 import java.util.List;

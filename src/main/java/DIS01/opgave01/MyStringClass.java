@@ -1,4 +1,4 @@
-package opgave01;
+package DIS01.opgave01;
 
 public class MyStringClass {
     private static String string;

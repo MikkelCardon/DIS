@@ -1,6 +1,6 @@
-package opgave02;
+package DIS01.opgave02;
 
-import opgave02.FletteSortering;
+import DIS01.opgave02.udenThread.FletteSortering;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,8 +19,8 @@ public class TestFlettesortering {
         //System.out.println(list);
 
 
-        FletteSortering tråd1 = new FletteSortering(list, 0, list.size()/2);
-        FletteSortering tråd2 = new FletteSortering(list, (list.size()/2)+1, list.size()-1);
+        DIS01.opgave02.FletteSortering tråd1 = new DIS01.opgave02.FletteSortering(list, 0, list.size()/2);
+        DIS01.opgave02.FletteSortering tråd2 = new DIS01.opgave02.FletteSortering(list, (list.size()/2)+1, list.size()-1);
 
 
         long l1, l2;
@@ -33,7 +33,7 @@ public class TestFlettesortering {
         tråd1.join();
         tråd2.join();
 
-        opgave02.udenThread.FletteSortering.merge(list,0, list.size() / 2, list.size()-1);
+        FletteSortering.merge(list,0, list.size() / 2, list.size()-1);
         System.out.println(list.size());
 
         l2 = System.nanoTime();
