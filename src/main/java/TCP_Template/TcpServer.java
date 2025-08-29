@@ -18,7 +18,9 @@ public class TcpServer {
             serverSocket = new ServerSocket(1234); //ServerSocket gør at vi lyter på 1234.
 
             while (true){
-                socket = serverSocket.accept(); //serSocker.accpept betyder at vi venter på at nogle kommer ind på porten
+                socket = serverSocket.accept();//serSocker.accpept betyder at vi venter på at nogle kommer ind på porten
+                System.out.println("New client joined - ip: " + socket.getInetAddress());
+
                 inputStreamReader = new InputStreamReader(socket.getInputStream());
                 outputStreamWriter = new OutputStreamWriter(socket.getOutputStream());
 
@@ -44,6 +46,7 @@ public class TcpServer {
                 outputStreamWriter.close();
                 bufferedReader.close();
                 bufferedWriter.close();
+                System.out.println("Client exit");
             }
 
 
