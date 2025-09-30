@@ -6,7 +6,7 @@ import java.net.URL;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class URLTest {
+public class URLTestCustom {
 
     static BufferedReader br;
     public static void main(String[] args) throws Exception {
@@ -19,35 +19,38 @@ public class URLTest {
 
 
         while ((line = br.readLine())!=null) {
-//            if(line.contains("currencyItem_currencyNameContainer__19YHn")
-//                && line.contains("class=\"currencyItem_actualValueContainer__2xLkB\"")){
-//                System.out.println("line: " + line);
-//            }
             if (line.contains("currencyItem_currencyItemWrapper__2-TKC")){
                 String[] divSplit = line.split("div");
 
                 for (String div : divSplit) {
 
                     if (div.contains("currencyItem_currencyNameContainer__19YHn")){
-                        Pattern pattern = Pattern.compile(">(.*?)<");
-                        Matcher matcher = pattern.matcher(div);
-
-                        if (matcher.find()){
-                            System.out.print(matcher.group(1) + " -  ");
-                        }
+                        String extractedName = customRegex(div);
+                        System.out.print(extractedName + " - ");
                     }
                     if (div.contains("currencyItem_actualValueContainer__2xLkB")){
-                        Pattern pattern = Pattern.compile(">(.*?)<");
-                        Matcher matcher = pattern.matcher(div);
-
-                        if (matcher.find()){
-                            System.out.println(matcher.group(1));
-                        }
+                        String extractedValue = customRegex(div);
+                        System.out.println(extractedValue);
                     }
                 }
-
             }
         }
+    }
+
+    public static String customRegex(String line){
+        String regex = "";
+        for (int i = 0; i < line.length(); i++) {
+            if (line.charAt(i) == '>'){
+                i++;
+                while(line.charAt(i) != '<' && i < line.length()){
+                    regex += line.charAt(i);
+                    i++;
+                }
+                break;
+            }
+        }
+
+        return regex;
     }
 }
 
